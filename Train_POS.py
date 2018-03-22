@@ -32,12 +32,13 @@ logger.addHandler(ch)
 
 
 # :: Train / Dev / Test-Files ::
-datasetName = 'unidep_pos'
+#datasetName = 'unidep_pos'
+datasetName = "POS"
 dataColumns = {1:'tokens', 3:'POS'} #Tab separated columns, column 1 contains the token, 3 the universal POS tag
 labelKey = 'POS'
 
-embeddingsPath = 'levy_deps.words' #Word embeddings by Levy et al: https://levyomer.wordpress.com/2014/04/25/dependency-based-word-embeddings/
-
+#embeddingsPath = 'levy_deps.words' #Word embeddings by Levy et al: https://levyomer.wordpress.com/2014/04/25/dependency-based-word-embeddings/
+embeddingsPath = 'data/embedding/embedding.words'
 
 #Parameters of the network
 params = {'dropout': [0.25, 0.25], 'classifier': 'CRF', 'LSTM-Size': [100], 'optimizer': 'nadam', 'charEmbeddings': None, 'miniBatchSize': 32}
@@ -84,6 +85,6 @@ model.setMappings(embeddings, data['mappings'])
 model.setTrainDataset(data, labelKey)
 model.verboseBuild = True
 model.modelSavePath = "models/%s/%s/[DevScore]_[TestScore]_[Epoch].h5" % (datasetName, labelKey) #Enable this line to save the model to the disk
-model.evaluate(50)
+model.evaluate(10)
 
 

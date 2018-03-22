@@ -31,7 +31,8 @@ def perpareDataset(embeddingsPath, datasetFiles, frequencyThresholdUnknownTokens
         commentSymbol: If not None, lines starting with this symbol will be skipped
     """
     embeddingsName = os.path.splitext(embeddingsPath)[0]
-    datasetName = "_".join(sorted([datasetFile[0] for datasetFile in datasetFiles])+[embeddingsName])
+    datasetName = datasetFiles[0][0]
+    #datasetName = "_".join(sorted([datasetFile[0] for datasetFile in datasetFiles])+[embeddingsName])
     outputPath = 'pkl/'+datasetName+'.pkl'
     
     if os.path.isfile(outputPath):

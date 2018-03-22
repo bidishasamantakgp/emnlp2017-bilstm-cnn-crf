@@ -579,7 +579,7 @@ class BiLSTM:
                 self.additionalFeatures = json.loads(f.attrs['additionalFeatures'])
                 
             if 'maxCharLen' in f.attrs:
-                self.maxCharLen = int(f.attrs['maxCharLen'])
+                self.maxCharLen = 1000 #int(f.attrs['maxCharLen'])
             
         self.model = model        
         self.setMappings(None, mappings)
